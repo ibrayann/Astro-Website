@@ -1,0 +1,25 @@
+---
+import Card from "../components/Card.astro";
+import Showcase from "../components/Showcase.astro";
+import Layout from "../layouts/Layout.astro";
+
+const posts = await Astro.glob("../posts/*.md")
+---
+
+<Layout title="blog">
+    <Showcase heading="Astro" text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis voluptatibus, architecto vitae illo consectetur debitis magni sit voluptatem modi tenetur?."/>
+  <section class="mt-7">
+    <div class=" px-4">
+        
+      {
+        posts.map((post) => (
+          <Card>
+            <h3 class=" font-bold text-xl mb-2">{post.frontmatter.title}</h3>
+            <p >{post.frontmatter.excerpt}</p>
+            <a href={`/${post.frontmatter.slug}`} class=" bg-[#0f172a] inline-block text-white py-2 px-5 rounded-md mt-3 uppercase tracking-wide">Readme Now</a>
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

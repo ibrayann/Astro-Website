@@ -1,0 +1,40 @@
+---
+import logos from "../images/framework-logos.png";
+import logosSmall from "../images/framework-logos-small.png";
+export interface Props {
+  heading?: string;
+  text?: string;
+  showExtra?: boolean;
+}
+const {
+  heading = "Welcome To The Astro Crash Course!",
+  text = "Build super fast HTML-first websites using your favorite JavaScript frameworks",
+  showExtra = false,
+} = Astro.props as Props;
+---
+
+<section class="bg-gradient-to-b from-[#0f172a] to-[#6b21a8] p-7">
+  <div class="max-w-lg text-white text-center my-12 mx-auto">
+    <h1 class="text-5xl text-white mb-5">{heading}</h1>
+    <p class="text-2xl mb-5">
+      {text}
+    </p>
+  </div>
+
+  {
+    showExtra && (
+      <>
+        <div class=" text-center">
+          <img class="rounded-lg hidden  md:block md:m-auto  " src={logos} alt="" />
+          <img class="rounded-lg md:hidden m-auto" src={logosSmall} alt="" />
+        </div>
+        <p class=" text-white text-center font-light mt-2">
+          <small>
+            This is a demo website used for the YouTube crash course
+          </small>
+        </p>
+      </>
+    )
+  }
+</section>
+
